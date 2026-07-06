@@ -8,7 +8,7 @@ const analyzeFood = async (req, res) => {
       return res.status(400).json({ message: 'foodName is required' });
     }
 
-    // Pull the user's real medical profile from DB, not from the request body
+    // Pull the user's real medical profile from DB
     const user = await User.findById(req.user.id).select('medicalConditions allergies dietaryPreferences');
 
     const prompt = `You are a nutrition assistant. Analyze this food item for a specific user.
