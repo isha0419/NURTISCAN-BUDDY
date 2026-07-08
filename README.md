@@ -5,6 +5,9 @@
 NutriScan Buddy is a full-stack, AI-powered nutrition assistant that scans food nutrition labels, flags junk/processed foods with a personalized risk level based on your medical conditions, and recommends healthier alternatives when you're craving something unhealthy.
 
 ---
+## 🌐 Live Demo
+
+🔗 **[Try NutriScan Buddy](https://nurtiscan-buddy2.onrender.com)**
  
 ## ✨ Features
  
