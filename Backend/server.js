@@ -8,7 +8,7 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin: 'http://localhost:5173', // your Vite frontend URL
+  origin: 'https://nurtiscan-buddy2.onrender.com', // your Vite frontend URL
   credentials: true, // allows cookies to be sent
 }));
 app.use(express.json({ limit: '10mb' }));

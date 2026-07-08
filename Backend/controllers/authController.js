@@ -9,8 +9,8 @@ const generateToken = (id) => {
 const sendTokenCookie = (res, token) => {
   res.cookie('token', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production', // true only over HTTPS
-    sameSite: 'lax', // protects against CSRF, use 'none' + secure:true if frontend/backend are on different domains
+    secure: true, // true only over HTTPS
+    sameSite: 'none', // protects against CSRF, use 'none' + secure:true if frontend/backend are on different domains
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days, in ms
   });
 };
@@ -97,8 +97,8 @@ const updateHealthProfile = async (req, res) => {
 const logout = (req, res) => {
   res.clearCookie('token', {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: true,
+    sameSite: 'none',
   });
   res.json({ message: 'Logged out' });
 };
