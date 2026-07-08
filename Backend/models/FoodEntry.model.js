@@ -8,6 +8,8 @@ const foodEntrySchema = new mongoose.Schema({
     sugar: Number,
     sodium: Number,
     protein: Number,
+    carbs: Number, 
+    fats: Number, 
   },
   riskCategory: { type: String, default: 'unknown' },
   aiSuggestion: { type: String, default: '' },

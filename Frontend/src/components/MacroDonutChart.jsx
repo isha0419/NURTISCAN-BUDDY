@@ -2,14 +2,16 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 
 const COLORS = ['#1fb56a', '#f59e0b', '#38bdf8'];
 
+const round = (num) => Math.round((num + Number.EPSILON) * 100) / 100;
+
 export default function MacroDonutChart({ protein = 0, carbs = 0, fats = 0 }) {
   const data = [
-    { name: 'Protein', value: protein },
-    { name: 'Carbs', value: carbs },
-    { name: 'Fats', value: fats },
+    { name: 'Protein', value: round(protein) },
+    { name: 'Carbs', value: round(carbs) },
+    { name: 'Fats', value: round(fats) },
   ];
-  const total = protein + carbs + fats;
-
+  const total = round(protein + carbs + fats);
+  
   return (
     <div className="relative h-56 w-full">
       <ResponsiveContainer width="100%" height="100%">

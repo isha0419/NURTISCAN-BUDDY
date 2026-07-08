@@ -46,19 +46,26 @@ export default function Dashboard() {
     [entries]
   );
 
-  const todayTotals = useMemo(() => {
-    return todayEntries.reduce(
-      (acc, e) => {
-        acc.calories += e.nutrients?.calories || 0;
-        acc.protein += e.nutrients?.protein || 0;
-        acc.carbs += e.nutrients?.carbs || 0;
-        acc.fats += e.nutrients?.fats || 0;
-        return acc;
-      },
-      { calories: 0, protein: 0, carbs: 0, fats: 0 }
-    );
-  }, [todayEntries]);
+  const round = (num) => Math.round((num + Number.EPSILON) * 100) / 100;
 
+  const todayTotals = useMemo(() => {
+  const totals = todayEntries.reduce(
+    (acc, e) => {
+      acc.calories += e.nutrients?.calories || 0;
+      acc.protein += e.nutrients?.protein || 0;
+      acc.carbs += e.nutrients?.carbs || 0;
+      acc.fats += e.nutrients?.fats || 0;
+      return acc;
+    },
+    { calories: 0, protein: 0, carbs: 0, fats: 0 }
+  );
+  return {
+    calories: round(totals.calories),
+    protein: round(totals.protein),
+    carbs: round(totals.carbs),
+    fats: round(totals.fats),
+  };
+}, [todayEntries]);
   const weeklyData = useMemo(() => {
     const map = new Map();
     for (let i = 6; i >= 0; i--) {
